@@ -65,6 +65,31 @@ def create():
 
     return render_template('create.html')
 
+# Define the /healthz endpoint
+@app.route('/healthz')
+def healthcheck():
+    response = app.response_class(
+        response = json.dumps({ "result": "OK - healthy" }),
+        status = 200,
+        mimetype='application/json'
+    )
+    return response
+
+# Define the /metrics endpoint
+@app.route('/metrics')
+def metrics():
+    conn = get_db_connection()
+    conn.row_factory = sqlite3.Row
+    c = conn.cursor()
+    count_posts = c.execute('SELECT COUNT(id) as post_count FROM posts')
+    for r in c.fetchall():
+        response = app.response_class(
+            response = json.dumps({"post_count": dict(r)}),
+            status = 200,
+            mimetype='application/json'
+    )
+    return response
+
 # start the application on port 3111
 if __name__ == "__main__":
    app.run(host='0.0.0.0', port='3111')
