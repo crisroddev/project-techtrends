@@ -4,7 +4,7 @@ COPY . /app
 
 WORKDIR /app
 
-RUN pip --upgrade pip
+RUN pip install -r requirements.txt
 
 EXPOSE 3111
 
