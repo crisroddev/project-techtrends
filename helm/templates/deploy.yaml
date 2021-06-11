@@ -22,7 +22,7 @@ spec:
         app: techtrends
     spec:
       containers:
-      - image: crisroddev/techtrends:latest
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: techtrends
         ports:
