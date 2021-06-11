@@ -1,0 +1,10 @@
+apiVersion: v1
+#Chart Name
+name: techtrends
+description: Install Pyhton deployment
+keywords:
+- techtrends
+version: 1.0.0
+maintainers:
+- name: Cristian Rodriguez
+- email: cristian@crisrodalbagli.com
