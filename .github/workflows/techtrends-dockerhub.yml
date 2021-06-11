@@ -13,8 +13,8 @@ jobs:
         uses: actions/checkout@v2
 
       # # Create execution environments for our containers
-      # - name: Set up QEMU 
-      #   uses: docker/setup-quemu-action@v1
+      - name: Set up QEMU 
+        uses: docker/setup-quemu-action@v1
 
       # # Interface to build image
       # - name: Set up Docker buildx
