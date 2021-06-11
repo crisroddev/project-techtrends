@@ -4,10 +4,10 @@ metadata:
   annotations:
   labels:
     app: techtrends
-  name: test
-  namespace: test-stage
+  name: techtrends
+  namespace: {{ .Values.namespace.name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: techtrends
@@ -22,24 +22,24 @@ spec:
         app: techtrends
     spec:
       containers:
-      - image: crisroddev/techtrends:latest
-        imagePullPolicy: Always
+      - image: {{ .Values.image.respository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: techtrends
-        ports:
-        - containerPort: 3111
-          protocol: TCP
-        livenessProbe:
-           httpGet:
-             path: /healthz
-             port: 3111
-        readinessProbe:
-           httpGet:
-             path: /healthz
-             port: 3111
+        # ports:
+        # - containerPort: {{ .Values.ports.containerPort }}
+        #   protocol: {{ .Values.service.protocol }}
+        # livenessProbe:
+        #    httpGet:
+        #      path: {{ .Values.livenessProbe.path }}
+        #      port: {{ .Values.ports.containerPort }}
+        # readinessProbe:
+        #    httpGet:
+        #      path: {{ .Values.readinessProbe.path }}
+        #      port: {{ .Values.ports.containerPort }}
         resources:
           requests:
-            memory: "64Mi"
-            cpu: "250m"
+            memory: {{ .Values.resources.requests.memory }}
+            cpu: {{ .Values.resources.requests.cpu }}
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: {{ .Values.resources.limits.memory }}
+            cpu: {{ .Values.resources.limits.memory }}
