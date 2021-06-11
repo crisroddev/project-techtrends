@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./techtrends
-          file: Dockerfile
+          file: ./techtrends/Dockerfile
           plattforms: linux/amd64
           push: true
           tags: crisroddev/techtrends:latest
