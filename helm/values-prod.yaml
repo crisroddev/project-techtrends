@@ -2,7 +2,7 @@ namespace:
   name: prod
 
 service:
-  port: 6111
+  port: 7111
   targetPort: 3111
   protocol: TCP
   type: ClusterIP
@@ -10,14 +10,14 @@ service:
 image: 
   repository: crisroddev/techtrends
   tag: latest
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 replicaCount: 5
 
 resources:
   requests:
-    memory: "128Mi"
-    cpu: "350m"
+    memory: "90Mi"
+    cpu: "300m"
   limits:
     memory: "128Mi"
     cpu: "500m"
