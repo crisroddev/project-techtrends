@@ -4,10 +4,10 @@ metadata:
   annotations:
   labels:
     app: techtrends
-  name: techtrends
-  namespace: {{ .Values.namespace.name }}
+  name: test
+  namespace: test-stage
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
       app: techtrends
@@ -22,24 +22,24 @@ spec:
         app: techtrends
     spec:
       containers:
-      - image: {{ .Values.image.respository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
+      - image: crisroddev/techtrends:latest
+        imagePullPolicy: Always
         name: techtrends
-        # ports:
-        # - containerPort: {{ .Values.ports.containerPort }}
-        #   protocol: {{ .Values.service.protocol }}
-        # livenessProbe:
-        #    httpGet:
-        #      path: {{ .Values.livenessProbe.path }}
-        #      port: {{ .Values.ports.containerPort }}
-        # readinessProbe:
-        #    httpGet:
-        #      path: {{ .Values.readinessProbe.path }}
-        #      port: {{ .Values.ports.containerPort }}
+        ports:
+        - containerPort: 3111
+          protocol: TCP
+        livenessProbe:
+           httpGet:
+             path: /healthz
+             port: 3111
+        readinessProbe:
+           httpGet:
+             path: /healthz
+             port: 3111
         resources:
           requests:
-            memory: {{ .Values.resources.requests.memory }}
-            cpu: {{ .Values.resources.requests.cpu }}
+            memory: "64Mi"
+            cpu: "250m"
           limits:
-            memory: {{ .Values.resources.limits.memory }}
-            cpu: {{ .Values.resources.limits.memory }}
+            memory: "128Mi"
+            cpu: "500m"
