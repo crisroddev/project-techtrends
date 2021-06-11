@@ -1,5 +1,5 @@
 namespace:
-  name: sandbox
+  name: sandbox-test
 
 service:
   port: 4111
