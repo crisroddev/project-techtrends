@@ -10,7 +10,7 @@ jobs:
     
     steps:
     - uses: actiions/checkout@v2    
-    - name: Set up Python ${{ matrix.pyhton-version }}
+    - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       # For lop to install python in all versions
       with:
