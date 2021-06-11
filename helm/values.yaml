@@ -26,8 +26,8 @@ ports:
   containerPort: 3111
 
 livenessProbe:
-  path: healthz
+  path: /
 
 readinessProbe:
-  path: healthz
+  path: /
 
