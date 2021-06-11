@@ -1,10 +1,10 @@
-FROM python:3.8
+FROM python:2.7
 
 COPY . /app
 
 WORKDIR /app
 
-RUN pip3 --upgrade pip
+RUN pip --upgrade pip
 
 EXPOSE 3111
 
