@@ -15,5 +15,3 @@ spec:
     path: helm
     repoURL: https://github.com/crisroddev/project-techtrends/
     targetRevision: HEAD
-  # Sync policy
-  syncPolicy: {}
