@@ -12,4 +12,4 @@ spec:
     targetPort: 3111
   selector:
     app: techtrends
-  type: LoadBalancer
+  type: ClusterIP

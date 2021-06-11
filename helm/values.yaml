@@ -5,10 +5,10 @@ service:
   port: 3111
   targetPort: 3111
   protocol: TCP
-  type: LoadBalancer
+  type: ClusterIP
 
 image: 
-  repository: crisroddev/techtrends
+  repository: crisroddev/techtrends:latest
   tag: latest
   pullPolicy: IfNotPresent
 
