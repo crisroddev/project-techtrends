@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx-alpine
+  name: techtrends
   namespace: argocd
 spec:
   destination:
@@ -9,9 +9,11 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    # path to the folder with the YAML manifests
-    path: manifests
-    repoURL: https://github.com/crisroddev/argo-exercise/
+    helm:
+      valueFiles:
+      - values.yaml
+    path: helm
+    repoURL: https://github.com/crisroddev/project-techtrends/
     targetRevision: HEAD
   # Sync policy
   syncPolicy: {}
