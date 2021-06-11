@@ -1,0 +1,33 @@
+namespace:
+  name: test-stage
+
+service:
+  port: 3111
+  targetPort: 3111
+  protocol: TCP
+  type: ClusterIP
+
+image: 
+  repository: crisroddev/techtrends
+  tag: latest
+  pullPolicy: Always
+
+replicaCount: 3
+
+resources:
+  requests:
+    memory: "90Mi"
+    cpu: "300m"
+  limits:
+    memory: "128Mi"
+    cpu: "500m"
+
+ports:
+  containerPort: 3111
+
+livenessProbe:
+  path: /healthz
+
+readinessProbe:
+  path: /healthz
+
