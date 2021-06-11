@@ -5,7 +5,7 @@ service:
   port: 3111
   targetPort: 3111
   protocol: TCP
-  type: ClusterIP
+  type: LoadBalancer
 
 image: 
   repository: crisroddev/techtrends
@@ -26,8 +26,8 @@ ports:
   containerPort: 3111
 
 livenessProbe:
-  path: /
+  path: /healthz
 
 readinessProbe:
-  path: /
+  path: /healthz
 
