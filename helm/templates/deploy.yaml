@@ -25,9 +25,9 @@ spec:
       - image: {{ .Values.image.respository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: techtrends
-        ports:
-        - containerPort: {{ .Values.ports.containerPort }}
-          protocol: {{ .Values.service.protocol }}
+        # ports:
+        # - containerPort: {{ .Values.ports.containerPort }}
+        #   protocol: {{ .Values.service.protocol }}
         # livenessProbe:
         #    httpGet:
         #      path: {{ .Values.livenessProbe.path }}
