@@ -16,8 +16,6 @@ def get_post(post_id):
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
     connection.close()
-    # article_retrieved = "Article {post} retrieved!".format(post)
-    # print(article_retrieved)
     app.logger.info(post)
     return post
 
@@ -87,11 +85,17 @@ def healthcheck():
 def metrics():
     conn = get_db_connection()
     conn.row_factory = sqlite3.Row
+    conn_count = 0
+    if conn:
+        conn_count += 1
     c = conn.cursor()
     count_posts = c.execute('SELECT COUNT(id) as post_count FROM posts')
     for r in c.fetchall():
         response = app.response_class(
-            response = json.dumps({"post_count": dict(r)}),
+            response = json.dumps({
+                "post_count": dict(r),
+                "db_connections": conn_count
+                }),
             status = 200,
             mimetype='application/json'
     )
