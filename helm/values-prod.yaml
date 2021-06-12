@@ -17,10 +17,10 @@ replicaCount: 5
 resources:
   requests:
     memory: "128Mi"
-    cpu: "90m"
+    cpu: "350m"
   limits:
-    memory: "128Mi"
-    cpu: "1000"
+    memory: "256Mi"
+    cpu: "500m"
 
 ports:
   containerPort: 3111
