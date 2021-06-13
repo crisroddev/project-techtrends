@@ -2,6 +2,7 @@ import sqlite3
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
 import logging
+import sys
 
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
@@ -38,6 +39,9 @@ def post(post_id):
     post = get_post(post_id)
     if post is None:
         app.logger.info("Non-Existing Article")
+        logger.info("404 - Article does not exists")
+        logger.addHandler(h1)
+        logger.addHandler(h2)
         return render_template('404.html'), 404
         
     else:
@@ -47,6 +51,9 @@ def post(post_id):
 @app.route('/about')
 def about():
     app.logger.info("/About Request Succesfully")
+    logger.info("About Us")
+    logger.addHandler(h1)
+    logger.addHandler(h2)
     return render_template('about.html')
 
 # Define the post creation functionality 
@@ -66,6 +73,9 @@ def create():
             connection.close()
 
             app.logger.info("Article Created")
+            logger.info(f"Article {title} created")
+            logger.addHandler(h1)
+            logger.addHandler(h2)
             return redirect(url_for('index'))
 
     return render_template('create.html')
@@ -102,6 +112,12 @@ def metrics():
     return response
 
 # start the application on port 3111
+
 if __name__ == "__main__":
+    logger = logging.getLogger("__name__")
     logging.basicConfig(filename='app.log',level=logging.DEBUG)
+    h1 = logging.StreamHandler(sys.stdout)
+    h1.setLevel(logging.DEBUG)
+    h2 = logging.StreamHandler(sys.stderr)
+    h2.setLevel(logging.ERROR)
     app.run(host='0.0.0.0', port='3111', debug=True)
