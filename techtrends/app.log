@@ -1,0 +1,17 @@
+INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 529-164-491
+INFO:werkzeug:127.0.0.1 - - [13/Jun/2021 19:11:03] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Jun/2021 19:11:05] "GET /metrics HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Jun/2021 19:11:15] "GET /a3 HTTP/1.1" 404 -
+INFO:app:<sqlite3.Row object at 0x104728570>
+INFO:werkzeug:127.0.0.1 - - [13/Jun/2021 19:11:18] "GET /3 HTTP/1.1" 200 -
+INFO:app:<sqlite3.Row object at 0x104728c90>
+INFO:werkzeug:127.0.0.1 - - [13/Jun/2021 19:11:21] "GET /5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [13/Jun/2021 19:11:25] "GET /metics HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [13/Jun/2021 19:11:30] "GET /metrics HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Volumes/GoogleDrive/My Drive/Udacity-Cloud-Native/project-techtrends/techtrends/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 529-164-491

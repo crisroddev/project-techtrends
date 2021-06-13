@@ -6,9 +6,14 @@ import sys
 
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
+
+conn_count = 0
 def get_db_connection():
+    global conn_count
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    conn_count += 1
+
     return connection
 
 # Function to get a post using its ID
@@ -95,9 +100,6 @@ def healthcheck():
 def metrics():
     conn = get_db_connection()
     conn.row_factory = sqlite3.Row
-    conn_count = 0
-    if conn:
-        conn_count += 1
     c = conn.cursor()
     count_posts = c.execute('SELECT COUNT(id) as post_count FROM posts')
     for r in c.fetchall():
